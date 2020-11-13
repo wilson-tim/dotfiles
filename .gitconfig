@@ -1,0 +1,25 @@
+[user]
+    # These values are set in ~/.gitconfig_local
+[include]
+    path = ~/.gitconfig_local
+[core]
+	autocrlf = true
+	compression = 0
+	editor = vim
+[difftool "sourcetree"]
+	cmd = 'C:/Program Files (x86)/Beyond Compare 3/BComp.exe' \"$LOCAL\" \"$REMOTE\"
+[mergetool "sourcetree"]
+	cmd = 'C:/Program Files (x86)/Beyond Compare 3/BComp.exe' \"$LOCAL\" \"$REMOTE\" \"$BASE\" \"$MERGED\"
+	trustExitCode = true
+[push]
+	default = matching
+[alias]
+    # However, maybe you want to run an external command, rather than a Git subcommand. In that case, you start the command with a ! character.
+	new = !git init && git symbolic-ref HEAD refs/heads/main
+	hist = log --pretty='format:%C(auto)%h %ad %s%C(auto)%d [%an]' --graph --date=short
+	last = log -1 HEAD
+	lol = log --oneline --graph --decorate
+	lols = log --oneline --graph --decorate --stat
+	lola = log --oneline --graph --decorate --all
+[init]
+	defaultBranch = main

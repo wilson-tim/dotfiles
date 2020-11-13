@@ -1,0 +1,7 @@
+# Ignore .vim/plugged subdirectories maintained by vim-plug PlugInstall, etc.
+.vim/plugged/NERDTree/
+.vim/plugged/nerdtree-git-plugin/
+.vim/plugged/vim-airline/
+.vim/plugged/vim-sensible/
+
+.gitconfig_local
