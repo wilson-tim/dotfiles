@@ -5,3 +5,8 @@
 alias gbh='cd /'
 alias cdp='cd ~/Documents/projects'
 alias ll='ls -Fla'
+alias python='winpty python.exe'
+alias py='winpty py'
+alias pytdd='cd ~/Documents/projects/python-tdd-book'
+alias vea='cd ~/Documents/projects/python-tdd-book;source virtualenv/Scripts/activate'
+alias ved='deactivate'
