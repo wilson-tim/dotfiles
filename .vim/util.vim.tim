@@ -45,7 +45,17 @@ elseif has("win32unix")
 "   Git Bash for Windows: convert path from Unix to 'C:/path/to/file' format
     function! gitstatus#util#FormatPath(path) abort
         let l:pathStr = a:path.str()
-		let l:pathStr = systemlist('cygpath -m ' . l:pathStr)[0]
+" -----------------------------------------------------------------------------
+" SLOW
+"		echomsg l:pathStr
+"   l:pathStr may contain space character(s) so enclose it in single quotes
+"		let l:pathStr = systemlist('cygpath -m ' . "'" . l:pathStr . "'")[0]
+"		echomsg l:pathStr
+" -----------------------------------------------------------------------------
+" -----------------------------------------------------------------------------
+" FAST
+		let l:pathStr = substitute(l:pathStr, "/c/", "C:/", "")
+" -----------------------------------------------------------------------------
 		return l:pathStr
     endfunction
 else
