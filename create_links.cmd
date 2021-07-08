@@ -3,6 +3,7 @@ REM Run as Administrator
 
 REM 15/07/2020  TW  New script
 REM 13/11/2020  TW  Add link for .gitconfig_local
+REM 13/05/2021  TW  Add variable %DOTFILES%
 
 @ECHO OFF
 
