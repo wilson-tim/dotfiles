@@ -6,6 +6,7 @@
 	autocrlf = true
 	compression = 0
 	editor = vim
+	longpaths = true
 [difftool "sourcetree"]
 	cmd = 'C:/Program Files (x86)/Beyond Compare 3/BComp.exe' \"$LOCAL\" \"$REMOTE\"
 [mergetool "sourcetree"]
@@ -21,5 +22,9 @@
 	lol = log --oneline --graph --decorate
 	lols = log --oneline --graph --decorate --stat
 	lola = log --oneline --graph --decorate --all
+	credential-manager = credential-manager-core
+	lg = log --date=format:'%a %e %b, %Y' --pretty=format:'%C(yellow)%h%C(reset) %s %C(cyan)%cd%C(reset) %C(blue)%an%C(reset) %C(green)%d%C(reset)' --graph
 [init]
 	defaultBranch = main
+[credential]
+	helper = manager
