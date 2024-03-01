@@ -2,6 +2,7 @@ set nocompatible
 syntax on
 set nu
 filetype indent plugin on
+nnoremap <silent> <F4> :set cursorline!<CR>
 
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -10,6 +11,7 @@ endif
 
 call plug#begin()   
 
+Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
 " Plug 'vim-airline/vim-airline-themes'
 Plug 'preservim/NERDTree'
