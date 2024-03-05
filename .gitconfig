@@ -23,7 +23,14 @@
 	lols = log --oneline --graph --decorate --stat
 	lola = log --oneline --graph --decorate --all
 	credential-manager = credential-manager-core
+# https://startcodingnow.com/git-config-tips
+# https://roadrunnertwice.dreamwidth.org/596185.html
+# https://roadrunnertwice.dreamwidth.org/596185.html#:~:text=There%27s%20some%20tools,dizzyingly%20chaotic%20input.
 	lg = log --date=format:'%a %e %b, %Y' --pretty=format:'%C(yellow)%h%C(reset) %s %C(cyan)%cd%C(reset) %C(blue)%an%C(reset) %C(green)%d%C(reset)' --graph
+# https://stackoverflow.com/questions/5188320/how-can-i-get-a-list-of-git-branches-ordered-by-most-recent-commit
+# https://stackoverflow.com/a/5188364
+	recent = "!r() { refbranch=$1 count=$2; git for-each-ref --sort=-committerdate refs/heads/ --format='%(refname:short)|%(HEAD)%(color:green)%(refname:short)%(color:reset)|%(color:yellow)%(objectname:short)%(color:reset)|%(contents:subject)|%(color:cyan)%(committerdate:relative)%(color:reset)|%(color:blue)%(authorname)%(color:reset)|' --color=always --count=${count:-20} | while read line; do branch=$(echo \"$line\" | awk 'BEGIN { FS = \"|\" }; { print $1 }' | tr -d '*'); ahead=$(git rev-list --count \"${refbranch:-origin/main}..${branch}\"); behind=$(git rev-list --count \"${branch}..${refbranch:-origin/main}\"); colorline=$(echo \"$line\" | sed 's/^[^|]*|//'); echo \"$ahead|$behind|$colorline\" | awk -v FS='|' -v OFS='|' '{$5=substr($5,1,50)}1' ; done | ( printf \"ahead|behind|\\e[32m branch\\e[m|\\e[33mcommit\\e[m|message|\\e[36mlastcommit\\e[m|\\e[34mauthor\\e[m\n\" && cat ) | column -ts'|';}; r"
+	recentall = "!r() { refbranch=$1 count=$2; git for-each-ref --sort=-committerdate --format='%(refname:short)|%(HEAD)%(color:green)%(refname:short)%(color:reset)|%(color:yellow)%(objectname:short)%(color:reset)|%(contents:subject)|%(color:cyan)%(committerdate:relative)%(color:reset)|%(color:blue)%(authorname)%(color:reset)|' --color=always --count=${count:-20} | while read line; do branch=$(echo \"$line\" | awk 'BEGIN { FS = \"|\" }; { print $1 }' | tr -d '*'); ahead=$(git rev-list --count \"${refbranch:-origin/main}..${branch}\"); behind=$(git rev-list --count \"${branch}..${refbranch:-origin/main}\"); colorline=$(echo \"$line\" | sed 's/^[^|]*|//'); echo \"$ahead|$behind|$colorline\" | awk -v FS='|' -v OFS='|' '{$5=substr($5,1,50)}1' ; done | ( printf \"ahead|behind|\\e[32m branch\\e[m|\\e[33mcommit\\e[m|message|\\e[36mlastcommit\\e[m|\\e[34mauthor\\e[m\n\" && cat ) | column -ts'|';}; r"
 [init]
 	defaultBranch = main
 [credential]
